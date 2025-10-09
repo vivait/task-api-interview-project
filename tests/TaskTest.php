@@ -2,15 +2,23 @@
 
 namespace App\Tests;
 
-use Symfony\Component\Panther\PantherTestCase;
+use App\Kernel;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use function json_decode;
 
-class TaskTest extends PantherTestCase
+class TaskTest extends WebTestCase
 {
     public function testSomething(): void
     {
-        $client = static::createPantherClient();
-        $crawler = $client->request('GET', '/');
+        self::createKernel();
+        $client = static::createClient();
+        $client->request('GET', '/');
 
-        $this->assertSelectorTextContains('h1', 'Hello World');
+        self::assertSame([], json_decode($client->getResponse()->getContent()));
+    }
+
+    protected static function getKernelClass(): string
+    {
+        return Kernel::class;
     }
 }

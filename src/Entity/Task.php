@@ -20,6 +20,9 @@ class Task
     #[ORM\Column]
     private ?bool $complete = null;
 
+    #[ORM\Column]
+    private ?string $group = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,5 +50,15 @@ class Task
         $this->complete = $complete;
 
         return $this;
+    }
+
+    public function getGroup(): ?string
+    {
+        return $this->group;
+    }
+
+    public function setGroup(?string $group): void
+    {
+        $this->group = $group;
     }
 }
