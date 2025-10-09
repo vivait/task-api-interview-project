@@ -26,7 +26,7 @@ Now discuss with interviewer about requirements of the task and decide a plan to
 
 ## Helpful CLI Commands
 
-Starting project: `docker compose up -d && docker compose exec php bin/console d:m:m --no-interaction`
+Starting project: `docker compose up -d && composer require symfony/runtime && docker compose exec php bin/console d:m:m --no-interaction`
 
 Changing DB: `docker compose exec php bin/console d:m:diff && docker compose exec php bin/console d:m:m`
 
